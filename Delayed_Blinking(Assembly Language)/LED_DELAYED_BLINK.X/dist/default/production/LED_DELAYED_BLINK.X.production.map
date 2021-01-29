@@ -1,0 +1,52 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Tue Nov 03 09:29:18 2020
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x0000e0
+                   .cinit    romdata   0x000070    program   0x000004
+.config_2007_BUILD/DEFAULT/PRODUCTION/DELAYED       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000071      
+                            0x002007    0x002007      
+            115 out of 8454 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+            CHECK_BUTTONS   0x000032    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+                CLOSE_ALL   0x00002b    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+                    DELAY   0x00004f    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+                  DELAY_2   0x000058    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+            INFINITE_LOOP   0x000049    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+                   INVOKE   0x000037    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+                  LED_YAK   0x000012    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+                MAIN_LOOP   0x00000d    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+             SET_COUNTERS   0x000062    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+           SET_COUNTERS_2   0x000069    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                MAIN_LOOP   0x00000d    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+                  LED_YAK   0x000012    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+                CLOSE_ALL   0x00002b    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+            CHECK_BUTTONS   0x000032    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+                   INVOKE   0x000037    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+            INFINITE_LOOP   0x000049    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+                    DELAY   0x00004f    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+                  DELAY_2   0x000058    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+             SET_COUNTERS   0x000062    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+           SET_COUNTERS_2   0x000069    program     static C:\Users\enist\MPLABXProjects\LED_DELAYED_BLINK.X\DELAYED_BLINKING_LED.asm
+
+

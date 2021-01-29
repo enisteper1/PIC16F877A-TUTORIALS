@@ -1,0 +1,52 @@
+Warning[205] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 2 : Found directive in column 1. (LIST)
+Warning[205] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 4 : Found directive in column 1. (__CONFIG)
+Warning[205] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 5 : Found directive in column 1. (ORG)
+Warning[205] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 6 : Found directive in column 1. (BANKSEL)
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 7 : Found opcode in column 1. (MOVLW)
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 8 : Found opcode in column 1. (MOVWF)
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 8 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 9 : Found opcode in column 1. (CLRF)
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 9 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[205] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 10 : Found directive in column 1. (BANKSEL)
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 11 : Found opcode in column 1. (CLRF)
+Warning[205] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 13 : Found directive in column 1. (CBLOCK)
+Warning[205] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 19 : Found directive in column 1. (ENDC)
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 21 : Found opcode in column 1. (CALL)
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 22 : Found opcode in column 1. (MOVLW)
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 23 : Found opcode in column 1. (MOVWF)
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 23 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 24 : Found opcode in column 1. (MOVLW)
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 25 : Found opcode in column 1. (MOVWF)
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 25 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 38 : Using default destination of 1 (file).
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 38 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 39 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 44 : Using default destination of 1 (file).
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 44 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 45 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 50 : Using default destination of 1 (file).
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 50 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 51 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 56 : Using default destination of 1 (file).
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 56 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 57 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 67 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 68 : Found opcode in column 1. (RETURN)
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 71 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 73 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 76 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 79 : Found opcode in column 1. (RETURN)
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 83 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 85 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 87 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 95 : Found opcode in column 1. (RETURN)
+Message[305] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 108 : Using default destination of 1 (file).
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 108 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 111 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 113 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 121 : Found opcode in column 1. (RETURN)
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 126 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 128 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 130 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 133 : Found opcode in column 1. (RETURN)
+Warning[205] C:\USERS\ENIST\MPLABXPROJECTS\LED_YAKMA.X\LED_ASM.ASM 135 : Found directive in column 1. (END)

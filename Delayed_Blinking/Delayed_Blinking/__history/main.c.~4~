@@ -1,0 +1,48 @@
+#include <main.h>
+
+////////////////////////////////////////////////////////
+///////////START-PAUSE-STOP BUTONLU DENEY///////////////
+//START -> SIRAYLA LED YAKMA
+//PAUSE -> SONSUZ DONGU
+//STOP  -> 3 KERE YAKIP MAINE GERI DONME
+void Blink_Sequential();
+
+void main()
+{
+   set_tris_b(0xFF);
+   output_b(0x00);
+   set_tris_d(0x00);
+   output_d(0x00);
+
+   while(TRUE)
+   {
+      if (input(pin_b1)) // Eger START a basilmissa
+      {
+         delay_us(20); // Hata onlemek icin 20 us delay
+         Blink_Sequential();
+      }
+      
+   }
+
+}
+void Blink_Sequential()
+{  
+   output_low(pin_d3);
+   output_high(pin_d0);
+   delay_ms(500);
+   output_low(pin_d0);
+   output_high(pin_d1);
+   delay_ms(500);
+   output_low(pin_d1);
+   output_high(pin_d2);
+   delay_ms(500);
+   output_low(pin_d2);
+   output_high(pin_d3);
+   delay_ms(500);
+}
+
+void Stop()
+{
+   
+}
+

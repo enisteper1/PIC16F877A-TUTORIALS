@@ -1,0 +1,24 @@
+#include <main.h>
+
+
+void main()
+{
+   set_tris_b(0xFF);
+   output_b(0x00);
+   set_tris_d(0x00);
+   output_d(0x00);
+
+   while(TRUE)
+   {
+      if (input(pin_b1))
+      {
+         delay_us(20);
+         output_high(pin_d0);
+         delay_ms(1000);
+         output_low(pin_d0);
+         delay_ms(1000);
+      }
+      
+   }
+
+}

@@ -1,0 +1,50 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Sat Oct 31 07:31:11 2020
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x0000cc
+                   .cinit    romdata   0x000066    program   0x000004
+.config_2007_BUILD/DEFAULT/PRODUCTION/LED_ASM       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000067      
+                            0x002007    0x002007      
+            105 out of 8454 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+            CHECK_BUTTONS   0x000041    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+                CLOSE_ALL   0x00002b    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+                    DELAY   0x000032    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+                  DELAY_2   0x00005c    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+            INFINITE_LOOP   0x000057    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+                   INVOKE   0x000046    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+                  LED_YAK   0x000012    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+                MAIN_LOOP   0x00000d    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+             SET_COUNTERS   0x00003b    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                MAIN_LOOP   0x00000d    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+                  LED_YAK   0x000012    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+                CLOSE_ALL   0x00002b    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+                    DELAY   0x000032    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+             SET_COUNTERS   0x00003b    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+            CHECK_BUTTONS   0x000041    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+                   INVOKE   0x000046    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+            INFINITE_LOOP   0x000057    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+                  DELAY_2   0x00005c    program     static C:\Users\enist\MPLABXProjects\led_yakma.X\led_asm.asm
+
+
