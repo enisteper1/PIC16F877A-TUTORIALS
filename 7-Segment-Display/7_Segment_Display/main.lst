@@ -1,0 +1,286 @@
+CCS PCM C Compiler, Version 5.015, 5967               19-Nov-20 21:04
+
+               Filename:   C:\Users\enist\OneDrive\Belgeler\CCS C Projects\7-Segment-Display\main.lst
+
+               ROM used:   190 words (2%)
+                           Largest free fragment is 2048
+               RAM used:   6 (2%) at main() level
+                           8 (2%) worst case
+               Stack used: 1 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   07E
+0003:  NOP
+.................... #include <main.h> 
+.................... #include <16F877A.h> 
+.................... //////////// Standard Header file for the PIC16F877A device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F877A 
+....................  
+.................... #list 
+....................  
+.................... #device ADC=16 
+....................  
+.................... #FUSES NOWDT                 	//No Watch Dog Timer 
+.................... #FUSES NOBROWNOUT            	//No brownout reset 
+.................... #FUSES NOLVP                 	//No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+....................  
+.................... #use delay(crystal=20000000) 
+*
+0068:  MOVLW  23
+0069:  MOVWF  04
+006A:  BCF    03.7
+006B:  MOVF   00,W
+006C:  BTFSC  03.2
+006D:  GOTO   07B
+006E:  MOVLW  06
+006F:  MOVWF  78
+0070:  CLRF   77
+0071:  DECFSZ 77,F
+0072:  GOTO   071
+0073:  DECFSZ 78,F
+0074:  GOTO   070
+0075:  MOVLW  7B
+0076:  MOVWF  77
+0077:  DECFSZ 77,F
+0078:  GOTO   077
+0079:  DECFSZ 00,F
+007A:  GOTO   06E
+007B:  BCF    0A.3
+007C:  BCF    0A.4
+007D:  GOTO   0B3 (RETURN)
+....................  
+....................  
+....................  
+.................... void Lookup_Table(int8); // Common Anode icin Lookup Table 
+....................  
+.................... void main() 
+007E:  MOVF   03,W
+007F:  ANDLW  1F
+0080:  MOVWF  03
+0081:  BSF    03.5
+0082:  BSF    1F.0
+0083:  BSF    1F.1
+0084:  BSF    1F.2
+0085:  BCF    1F.3
+0086:  MOVLW  07
+0087:  MOVWF  1C
+0088:  BCF    03.7
+.................... { 
+....................    // Analog inputlari giris yaptim 
+....................    setup_adc_ports(0xFF); 
+0089:  BSF    1F.0
+008A:  BSF    1F.1
+008B:  BSF    1F.2
+008C:  BSF    1F.3
+....................    set_adc_channel(0x00); 
+008D:  MOVLW  00
+008E:  MOVWF  78
+008F:  BCF    03.5
+0090:  MOVF   1F,W
+0091:  ANDLW  C7
+0092:  IORWF  78,W
+0093:  MOVWF  1F
+....................    // D portunu cikis yaptim 
+....................    set_tris_d(0x00); 
+0094:  MOVLW  00
+0095:  BSF    03.5
+0096:  MOVWF  08
+....................    output_d(0xFF); 
+0097:  CLRF   08
+0098:  MOVLW  FF
+0099:  BCF    03.5
+009A:  MOVWF  08
+....................  
+....................    // Main Loop 
+....................    while(TRUE) 
+....................    { 
+....................       // Eger E0 a basilmissa 
+....................       if (input(pin_e0)) 
+009B:  BSF    03.5
+009C:  BSF    09.0
+009D:  BCF    03.5
+009E:  BTFSS  09.0
+009F:  GOTO   0B7
+....................       { 
+....................          delay_us(20); 
+00A0:  MOVLW  20
+00A1:  MOVWF  77
+00A2:  DECFSZ 77,F
+00A3:  GOTO   0A2
+00A4:  GOTO   0A5
+00A5:  NOP
+....................          // Lookup table ile sirasiyla 500ms ile 10a kadar saydirdim 
+....................          for(int8 i = 0; i<10; i++) 
+00A6:  CLRF   21
+00A7:  MOVF   21,W
+00A8:  SUBLW  09
+00A9:  BTFSS  03.0
+00AA:  GOTO   0B7
+....................          { 
+....................             Lookup_Table(i); 
+00AB:  MOVF   21,W
+00AC:  MOVWF  22
+00AD:  GOTO   004
+....................             delay_ms(500); 
+00AE:  MOVLW  02
+00AF:  MOVWF  22
+00B0:  MOVLW  FA
+00B1:  MOVWF  23
+00B2:  GOTO   068
+00B3:  DECFSZ 22,F
+00B4:  GOTO   0B0
+00B5:  INCF   21,F
+00B6:  GOTO   0A7
+....................              
+....................          } 
+....................            
+....................       } 
+....................       output_d(0xFF); 
+00B7:  BSF    03.5
+00B8:  CLRF   08
+00B9:  MOVLW  FF
+00BA:  BCF    03.5
+00BB:  MOVWF  08
+00BC:  GOTO   09B
+....................    } 
+....................  
+.................... } 
+....................  
+00BD:  SLEEP
+....................  
+.................... // 7 SEGMENT DISPLAY COMMON ANODE LOOKUP TABLE 
+.................... void Lookup_Table(int8 counter) 
+.................... { 
+....................    // Gelen counter a gore hexadecimal deger atadim 
+....................    switch(counter) 
+*
+0004:  MOVF   22,W
+0005:  XORLW  00
+0006:  BTFSC  03.2
+0007:  GOTO   024
+0008:  XORLW  01
+0009:  BTFSC  03.2
+000A:  GOTO   02A
+000B:  XORLW  03
+000C:  BTFSC  03.2
+000D:  GOTO   030
+000E:  XORLW  01
+000F:  BTFSC  03.2
+0010:  GOTO   036
+0011:  XORLW  07
+0012:  BTFSC  03.2
+0013:  GOTO   03C
+0014:  XORLW  01
+0015:  BTFSC  03.2
+0016:  GOTO   042
+0017:  XORLW  03
+0018:  BTFSC  03.2
+0019:  GOTO   048
+001A:  XORLW  01
+001B:  BTFSC  03.2
+001C:  GOTO   04E
+001D:  XORLW  0F
+001E:  BTFSC  03.2
+001F:  GOTO   054
+0020:  XORLW  01
+0021:  BTFSC  03.2
+0022:  GOTO   05A
+0023:  GOTO   060
+....................    { 
+....................       case 0: output_d(0xC0); break; 
+0024:  BSF    03.5
+0025:  CLRF   08
+0026:  MOVLW  C0
+0027:  BCF    03.5
+0028:  MOVWF  08
+0029:  GOTO   065
+....................       case 1: output_d(0xF9); break; 
+002A:  BSF    03.5
+002B:  CLRF   08
+002C:  MOVLW  F9
+002D:  BCF    03.5
+002E:  MOVWF  08
+002F:  GOTO   065
+....................       case 2: output_d(0xA4); break; 
+0030:  BSF    03.5
+0031:  CLRF   08
+0032:  MOVLW  A4
+0033:  BCF    03.5
+0034:  MOVWF  08
+0035:  GOTO   065
+....................       case 3: output_d(0xB0); break; 
+0036:  BSF    03.5
+0037:  CLRF   08
+0038:  MOVLW  B0
+0039:  BCF    03.5
+003A:  MOVWF  08
+003B:  GOTO   065
+....................       case 4: output_d(0x99); break; 
+003C:  BSF    03.5
+003D:  CLRF   08
+003E:  MOVLW  99
+003F:  BCF    03.5
+0040:  MOVWF  08
+0041:  GOTO   065
+....................       case 5: output_d(0x92); break; 
+0042:  BSF    03.5
+0043:  CLRF   08
+0044:  MOVLW  92
+0045:  BCF    03.5
+0046:  MOVWF  08
+0047:  GOTO   065
+....................       case 6: output_d(0x82); break; 
+0048:  BSF    03.5
+0049:  CLRF   08
+004A:  MOVLW  82
+004B:  BCF    03.5
+004C:  MOVWF  08
+004D:  GOTO   065
+....................       case 7: output_d(0xF8); break; 
+004E:  BSF    03.5
+004F:  CLRF   08
+0050:  MOVLW  F8
+0051:  BCF    03.5
+0052:  MOVWF  08
+0053:  GOTO   065
+....................       case 8: output_d(0x80); break; 
+0054:  BSF    03.5
+0055:  CLRF   08
+0056:  MOVLW  80
+0057:  BCF    03.5
+0058:  MOVWF  08
+0059:  GOTO   065
+....................       case 9: output_d(0x90); break; 
+005A:  BSF    03.5
+005B:  CLRF   08
+005C:  MOVLW  90
+005D:  BCF    03.5
+005E:  MOVWF  08
+005F:  GOTO   065
+....................       default: output_d(0xFF); break; 
+0060:  BSF    03.5
+0061:  CLRF   08
+0062:  MOVLW  FF
+0063:  BCF    03.5
+0064:  MOVWF  08
+....................    } 
+0065:  BCF    0A.3
+0066:  BCF    0A.4
+0067:  GOTO   0AE (RETURN)
+....................     
+.................... } 
+
+Configuration Fuses:
+   Word  1: 3F32   HS NOWDT PUT NOBROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

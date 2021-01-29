@@ -1,0 +1,85 @@
+LIST P=16F877A
+    INCLUDE "P16F877A.INC"
+ __CONFIG _WDTE_OFF & _PWRTE_OFF & _BOREN_OFF & _LVP_OFF & _CPD_OFF & _WRT_OFF & _CP_OFF & _HS_OSC & _WDT_OFF
+ 
+ ORG	H'00'
+ BANKSEL    TRISE
+ MOVLW	    0x07
+ MOVWF	    ADCON1; PORTE 0. pini giris yapt?m
+ CLRF	    TRISD; D yi cikis yapt?m
+ BANKSEL    PORTD
+ MOVLW	    H'FF'
+ MOVWF	    PORTD
+ 
+CBLOCK 0xA0; Counter atamalari
+    COUNTER_1; delay icin counter
+    COUNTER_2; delay icin counter
+    COUNTER_3; delay icin counter
+    DISP_COUNTER; Display icin
+ENDC
+
+MOVLW	H'00'
+MOVWF	DISP_COUNTER
+CALL SET_COUNTERS
+    
+MAIN_LOOP
+    BTFSC   PORTE,0
+    GOTO    INIT_DISP
+    MOVLW   H'FF'
+    MOVWF   PORTD
+    GOTO    MAIN_LOOP
+    
+INIT_DISP
+    MOVLW   H'00'
+    MOVWF   DISP_COUNTER
+COUNT_LOOP
+    MOVF    DISP_COUNTER, W ; 
+    CALL    DISPLAY_TABLE ; LOOKUP table a yonel
+    MOVWF   PORTD ; Lookup tabledan gelen degeri yazdir
+    CALL    DELAY ; Delay cagir
+    INCF    DISP_COUNTER ; sayaci bir arttir
+    BTFSS   DISP_COUNTER,3; 3. bit 1 ise altindaki satiri atla
+    GOTO    COUNT_LOOP;
+    BTFSS   DISP_COUNTER,1; Eger 3. bit ve 1. bit 1 ise son GOTO COUNT_LOOP u atla
+    GOTO    COUNT_LOOP
+    CLRF    DISP_COUNTER;COUNTER i sifirla 
+    GOTO MAIN_LOOP ; Tekrardan basa don
+
+
+DISPLAY_TABLE ;7-SEG-DISP-Common Anode Tablosu
+    
+    ADDWF  PCL,f  	
+    RETLW  0xC0	;0 in karsiligi
+    RETLW  0xF9 ;1 in karsiligi
+    RETLW  0xA4 ;2 in karsiligi
+    RETLW  0xB0 ;3 in karsiligi
+    RETLW  0x99 ;4 in karsiligi
+    RETLW  0x92 ;5 in karsiligi
+    RETLW  0x82 ;6 in karsiligi
+    RETLW  0xF8 ;7 in karsiligi
+    RETLW  0x80 ;8 in karsiligi
+    RETLW  0x90 ;9 in karsiligi
+
+ DELAY;3 counter azaltarak dongu islemi
+    DECFSZ  COUNTER_1,F ; 
+    GOTO    DELAY ; COUNTER_1 s?f?rlanana kadar basa dondur
+    DECFSZ  COUNTER_2,F ; COUNTER_1 0 ve COUNTER_2 0 ise GOTO DELAY atla
+    GOTO    DELAY ;basa dondur
+    DECFSZ  COUNTER_3,F ;
+    GOTO    DELAY ;
+    CALL    SET_COUNTERS ; En son tekrardan counterlari ata
+RETURN 
+    
+SET_COUNTERS; 500ms icin  counter atamasi
+    MOVLW   0x0F
+    MOVWF   COUNTER_3	
+    MOVLW   0xE7
+    MOVWF   COUNTER_2
+    MOVLW   0x2D
+    MOVWF   COUNTER_1
+RETURN
+
+END
+
+
+

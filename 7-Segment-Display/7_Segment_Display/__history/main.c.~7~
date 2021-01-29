@@ -1,0 +1,31 @@
+#include <main.h>
+
+void main()
+{
+   setup_adc_ports(0xFF);
+   set_adc_channel(0x00);
+   set_tris_d(0x00);
+   output_d(0x00);
+      
+
+   while(TRUE)
+   {
+      delay_us(20);
+      if (input(pin_e0))
+      {
+         output_high(pin_d0);
+         delay_ms(500);
+         output_low(pin_d1);
+         delay_ms(500);
+         
+      }
+   }
+
+}
+
+
+// 7 SEGMENT DISPLAY COMMON ANODE LOOKUP TABLE
+void Lookup_Table()
+{
+   
+}
