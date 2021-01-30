@@ -1,0 +1,143 @@
+#include <ldr_motor_contol.h>
+#include "lcd.c"
+#FUSES NOWDT                    //No Watch Dog Timer
+#FUSES NOPUT                    //No Power Up Timer
+#FUSES NOBROWNOUT               //No brownout reset
+#FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O
+#FUSES NOCPD                    //No EE protection
+#FUSES NOWRT                    //Program memory not write protected
+#FUSES NOPROTECT                //Code not protected from reading
+#FUSES NODEBUG
+
+unsigned int pot_value_new = 128;
+unsigned int pot_value_old = 128;
+
+unsigned int working_pwm = 128;
+
+char lukup_table[] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90, 0xFF};
+void Start();
+void Lookup_Table();
+
+void main()
+{
+   // Timer setup
+   setup_timer_2(T2_DIV_BY_16,255,1);
+   // CCP1 -> RC2 pini analog output
+   setup_CCP1(CCP_PWM);
+   // Dinlenilen clock kesmesi 20Mhz / 16
+   setup_adc(adc_clock_div_16);
+   // AN0 pini analog  oldu
+   setup_adc_ports(AN0);
+   
+   // A0 pini giris oldu
+   set_tris_a(0x01);
+   
+   // B portu RB1 RB2 RB3 pinleri giris oldu
+   set_tris_b(00001110);
+   output_b(0x00);
+   
+   // C2 C3 C4 pinleri cikis oldu
+   set_tris_c(00011100);
+   output_c(0x00);
+   
+   // D portu cikis oldu
+   set_tris_d(0x00);
+   output_d(0x00);
+   
+   // LCD INIT
+   lcd_init();
+   // A0 pini dinlenmeye baslandi
+   set_adc_channel(0);
+   delay_us(20);
+   // en basta 0 pwm bastirdim default olarak
+   set_pwm1_duty(0);
+   while(TRUE)
+   {
+     // Start butonu sorgulamasi
+     if(input(pin_b3))
+     {
+      delay_ms(250);
+      Start();
+     }
+     pot_value_new = read_adc();
+     // Eger basilmamissa ekrana Motor Control yazsin
+     printf(lcd_putc,"\fValue: %u", a);
+     // PWM 0 bassin
+     set_pwm1_duty(0);
+     // 2 tarafi da low yaparak calismamasini motorun garantiledim
+     output_low(pin_c3);
+     output_low(pin_c4);
+     delay_ms(20);
+   }
+
+}
+
+void Start()
+{ 
+   // Her baslangicta default degerleri ayarliyorum
+   // %50 duty cycle
+   pot_value_new = 128;
+   pot_value_old = 128;
+   working_pwm = 128;
+   //Surucunun bir bacagina low digerine high vererek calistirmaya hazirliyorum
+   output_high(pin_c3);
+   output_low(pin_c4);
+   // %50 duty cycle olarak 128 degerinde pwm basiyorum
+   set_pwm1_duty(working_pwm);
+   delay_ms(200);
+   
+   while(TRUE)
+   {
+      // Stop a basildi mi sorgula
+      if(input(pin_b3))
+      {
+         delay_ms(250);
+         break;
+      }
+      // Hiz arttir 
+      else if (input(pin_b1))
+      {
+         delay_ms(100);
+         if (working_pwm < 230)
+               working_pwm  += 25;
+         else
+            working_pwm = 255;
+      }
+      // Hiz azalt
+      else if (input(pin_b2))
+      {
+         delay_ms(100);
+         // 0 ile 255 in disina cikmamasi icin 
+         if (working_pwm > 40)
+            working_pwm -= 25;
+         //min hiz
+         else
+            working_pwm = 20;
+      }
+      //Potansiyometreden deger oku
+      pot_value_new = read_adc();
+      // Eger gelen deger oncekinden 5 fazla veya az ise pwm bas
+      // Burada +5 veya -5'in nedeni okunan degerde sapmanin yaratacagi surekli degeri yazdirmayi onlemek
+      if (pot_value_new >= pot_value_old + 5 || pot_value_new <= pot_value_old - 5)
+      {  
+         // eski degeri yenisine esitle
+         pot_value_old = pot_value_new;
+         working_pwm = pot_value_new;
+         if (working_pwm < 20)
+            working_pwm = 20;
+      }
+      
+      set_pwm1_duty(working_pwm);
+      //lcd'de bu degeri goster
+      
+      delay_ms(100);
+   }
+
+}
+
+void Lookup_Table(unsigned int pwm)
+{
+   
+
+}
+

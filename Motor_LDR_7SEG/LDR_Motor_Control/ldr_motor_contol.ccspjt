@@ -1,0 +1,23 @@
+[PROJECT]
+Target=ldr_motor_contol.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.015
+Compiler=PCM
+CCSVersion=5.015
+[Target Data]
+FileList=ldr_motor_contol.c
+[Directories]
+Include=D:\PIC\Devices\;D:\PIC\Drivers\
+[C:\Users\enist\OneDrive\Belgeler\CCS C Projects\LDR_Motor_Control\ldr_motor_contol]
+Type=4
+[mru-list]
+1=ldr_motor_contol.c
+[Opened Files]
+1=ldr_motor_contol.c
+2=ldr_motor_contol.h
+3=
+[ldr_motor_contol.c]
+Type=4
+[Units]
+Count=1
+1=ldr_motor_contol (main)

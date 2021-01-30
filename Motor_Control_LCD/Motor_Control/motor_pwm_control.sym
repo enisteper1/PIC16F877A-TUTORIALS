@@ -1,0 +1,109 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+008     lcd
+008     lcdlat
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020     pot_value_new
+021     pot_value_old
+022     working_pwm
+023     @TRIS_C
+024     @PRINTF_U_647.P1
+024     @PSTRINGCN7_647.P2
+024     lcd_init.i
+024     @PSTRINGC7_647.@SCRATCH1
+025-028 lcd_init.LCD_INIT_STRING
+025     @PRINTF_U_647.P1
+025     @PSTRINGC7_647.@SCRATCH2
+025     @PSTRINGCN7_647.@SCRATCH1
+026     @DIV88.P1
+026     @PSTRINGC7_647.@SCRATCH3
+026     @PSTRINGCN7_647.@SCRATCH2
+027     @DIV88.P1
+027     @PSTRINGC7_647.@SCRATCH4
+027     @PSTRINGCN7_647.@SCRATCH3
+028     lcd_putc.c
+028     @PSTRINGCN7_647.@SCRATCH4
+028     @DIV88.@SCRATCH1
+029     @delay_ms1.P1
+029     lcd_gotoxy.x
+029     lcd_init.@SCRATCH1
+02A     lcd_gotoxy.y
+02B     lcd_gotoxy.address
+02C     lcd_gotoxy.@SCRATCH1
+02D     lcd_send_byte.address
+02E     lcd_send_byte.n
+02F     lcd_read_byte.low
+02F     lcd_send_byte.@SCRATCH1
+030     lcd_send_nibble.n
+030     lcd_read_byte.high
+031     lcd_read_byte.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+088     lcdtris
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @const667.call
+00000C  @const669.call
+000011  @delay_ms1
+000025  lcd_send_nibble
+000036  lcd_read_nibble
+00003C  lcd_send_byte
+000042  lcd_read_byte
+00007E  lcd_init
+0000BC  lcd_gotoxy
+0000CE  lcd_putc
+0000FA  @DIV88
+00010F  Start
+000177  @PSTRINGCN7_647
+0001D1  @PRINTF_U_647
+00020B  @PSTRINGC7_647
+000263  @cinit1
+000263  MAIN
+000273  @cinit2
+
+Project Directory:
+    D:\PIC16F877A-TUTORIALS\HW5\Motor_Control\
+
+Project Files:
+    motor_pwm_control.c                                     [28-Jan-21 16:30  CRC=BA0E27C7]
+    motor_pwm_control.h                                     [10-Dec-20 02:18  CRC=00000000]
+    ..\..\..\PIC\Devices\16F877A.h                          [12-Nov-13 14:35  CRC=81334808]
+    ..\..\..\PIC\Drivers\lcd.c                              [19-Sep-13 15:38  CRC=D1A6378A]
+
+Source signature=DE8DDEE3
+
+Units:
+    motor_pwm_control (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   motor_pwm_control.xsym
+    Errors:      motor_pwm_control.err
+    Ext Symbols: motor_pwm_control.esym
+    INHX8:       motor_pwm_control.hex
+    Symbols:     motor_pwm_control.sym
+    List:        motor_pwm_control.lst
+    Debug/COFF:  motor_pwm_control.cof
+    Project:     motor_pwm_control.ccspjt
+    Call Tree:   motor_pwm_control.tre
+    Statistics:  motor_pwm_control.STA

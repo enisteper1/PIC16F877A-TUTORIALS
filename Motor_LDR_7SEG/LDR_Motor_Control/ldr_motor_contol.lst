@@ -1,0 +1,496 @@
+CCS PCM C Compiler, Version 5.015, 5967               18-Dec-20 04:09
+
+               Filename:   C:\Users\enist\OneDrive\Belgeler\CCS C Projects\LDR_Motor_Control\ldr_motor_contol.lst
+
+               ROM used:   310 words (4%)
+                           Largest free fragment is 2048
+               RAM used:   21 (6%) at main() level
+                           24 (7%) worst case
+               Stack used: 2 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   0AA
+0003:  NOP
+.................... #include <ldr_motor_contol.h> 
+.................... #include <16F877A.h> 
+.................... //////////// Standard Header file for the PIC16F877A device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F877A 
+*
+007F:  MOVF   31,W
+0080:  CLRF   78
+0081:  SUBWF  30,W
+0082:  BTFSC  03.0
+0083:  GOTO   087
+0084:  MOVF   30,W
+0085:  MOVWF  77
+0086:  GOTO   093
+0087:  CLRF   77
+0088:  MOVLW  08
+0089:  MOVWF  32
+008A:  RLF    30,F
+008B:  RLF    77,F
+008C:  MOVF   31,W
+008D:  SUBWF  77,W
+008E:  BTFSC  03.0
+008F:  MOVWF  77
+0090:  RLF    78,F
+0091:  DECFSZ 32,F
+0092:  GOTO   08A
+....................  
+.................... #list 
+....................  
+.................... #device ADC=8 
+....................  
+.................... #FUSES NOWDT                    //No Watch Dog Timer 
+.................... #FUSES NOBROWNOUT               //No brownout reset 
+.................... #FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+....................  
+.................... #use delay(crystal=20000000) 
+*
+0004:  MOVLW  30
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   017
+000A:  MOVLW  06
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  7B
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  DECFSZ 00,F
+0016:  GOTO   00A
+0017:  RETURN
+....................  
+....................  
+.................... #FUSES NOWDT                    //No Watch Dog Timer 
+.................... #FUSES NOPUT                    //No Power Up Timer 
+.................... #FUSES NOBROWNOUT               //No brownout reset 
+.................... #FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+.................... #FUSES NOCPD                    //No EE protection 
+.................... #FUSES NOWRT                    //Program memory not write protected 
+.................... #FUSES NOPROTECT                //Code not protected from reading 
+.................... #FUSES NODEBUG 
+....................  
+.................... unsigned int ldr_value_new = 128; 
+.................... unsigned int ldr_value_old = 128; 
+....................  
+.................... unsigned int working_pwm = 128; 
+.................... unsigned int duty = 0; 
+.................... // 7 SEG DISPLAY COMMON ANODE 
+.................... char lookup_table[] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90, 0xFF}; 
+*
+00BC:  MOVLW  C0
+00BD:  BCF    03.5
+00BE:  MOVWF  24
+00BF:  MOVLW  F9
+00C0:  MOVWF  25
+00C1:  MOVLW  A4
+00C2:  MOVWF  26
+00C3:  MOVLW  B0
+00C4:  MOVWF  27
+00C5:  MOVLW  99
+00C6:  MOVWF  28
+00C7:  MOVLW  92
+00C8:  MOVWF  29
+00C9:  MOVLW  82
+00CA:  MOVWF  2A
+00CB:  MOVLW  F8
+00CC:  MOVWF  2B
+00CD:  MOVLW  80
+00CE:  MOVWF  2C
+00CF:  MOVLW  90
+00D0:  MOVWF  2D
+00D1:  MOVLW  FF
+00D2:  MOVWF  2E
+.................... void Start(); 
+....................  
+.................... void main() 
+*
+00AA:  MOVF   03,W
+00AB:  ANDLW  1F
+00AC:  MOVWF  03
+00AD:  MOVLW  80
+00AE:  MOVWF  20
+00AF:  MOVWF  21
+00B0:  MOVWF  22
+00B1:  CLRF   23
+00B2:  MOVLW  FF
+00B3:  MOVWF  2F
+00B4:  BSF    03.5
+00B5:  BSF    1F.0
+00B6:  BSF    1F.1
+00B7:  BSF    1F.2
+00B8:  BCF    1F.3
+00B9:  MOVLW  07
+00BA:  MOVWF  1C
+00BB:  BCF    03.7
+.................... { 
+....................    // Timer setup 
+....................    setup_timer_2(T2_DIV_BY_16,255,1); 
+*
+00D3:  MOVLW  00
+00D4:  MOVWF  78
+00D5:  IORLW  06
+00D6:  MOVWF  12
+00D7:  MOVLW  FF
+00D8:  BSF    03.5
+00D9:  MOVWF  12
+....................    // CCP1 -> RC2 pini analog output 
+....................    setup_CCP1(CCP_PWM); 
+00DA:  BCF    03.5
+00DB:  BCF    2F.2
+00DC:  MOVF   2F,W
+00DD:  BSF    03.5
+00DE:  MOVWF  07
+00DF:  BCF    03.5
+00E0:  BCF    07.2
+00E1:  MOVLW  0C
+00E2:  MOVWF  17
+....................    // Dinlenilen clock kesmesi 20Mhz / 16 
+....................    setup_adc(adc_clock_div_16); 
+00E3:  BSF    03.5
+00E4:  BSF    1F.6
+00E5:  BCF    03.5
+00E6:  BSF    1F.6
+00E7:  BCF    1F.7
+00E8:  BSF    03.5
+00E9:  BCF    1F.7
+00EA:  BCF    03.5
+00EB:  BSF    1F.0
+....................    // AN0 pini analog  oldu 
+....................    setup_adc_ports(AN0); 
+00EC:  BSF    03.5
+00ED:  BCF    1F.0
+00EE:  BSF    1F.1
+00EF:  BSF    1F.2
+00F0:  BSF    1F.3
+....................     
+....................    // A0 pini giris oldu 
+....................    set_tris_a(0x01); 
+00F1:  MOVLW  01
+00F2:  MOVWF  05
+....................     
+....................    // B portu RB1 RB2 RB3 pinleri giris oldu 
+....................    set_tris_b(00001110); 
+00F3:  MOVLW  48
+00F4:  MOVWF  06
+....................    output_b(0x00); 
+00F5:  CLRF   06
+00F6:  BCF    03.5
+00F7:  CLRF   06
+....................     
+....................    // C2 C3 C4 pinleri cikis oldu 
+....................    set_tris_c(00011100); 
+00F8:  MOVLW  40
+00F9:  BSF    03.5
+00FA:  MOVWF  07
+00FB:  BCF    03.5
+00FC:  MOVWF  2F
+....................    output_c(0x00); 
+00FD:  MOVLW  00
+00FE:  MOVWF  2F
+00FF:  BSF    03.5
+0100:  CLRF   07
+0101:  BCF    03.5
+0102:  CLRF   07
+....................     
+....................    // D portu cikis oldu 
+....................    set_tris_d(0x00); 
+0103:  BSF    03.5
+0104:  MOVWF  08
+....................    output_d(0xFF); 
+0105:  CLRF   08
+0106:  MOVLW  FF
+0107:  BCF    03.5
+0108:  MOVWF  08
+....................     
+....................  
+....................    // A0 pini dinlenmeye baslandi 
+....................    set_adc_channel(0); 
+0109:  MOVLW  00
+010A:  MOVWF  78
+010B:  MOVF   1F,W
+010C:  ANDLW  C7
+010D:  IORWF  78,W
+010E:  MOVWF  1F
+....................    delay_us(20); 
+010F:  MOVLW  20
+0110:  MOVWF  77
+0111:  DECFSZ 77,F
+0112:  GOTO   111
+0113:  GOTO   114
+0114:  NOP
+....................    // en basta 0 pwm bastirdim default olarak 
+....................    set_pwm1_duty(0); 
+0115:  CLRF   15
+....................    while(TRUE) 
+....................    { 
+....................      // Start butonu sorgulamasi 
+....................      if(input(pin_b3)) 
+0116:  BSF    03.5
+0117:  BSF    06.3
+0118:  BCF    03.5
+0119:  BTFSS  06.3
+011A:  GOTO   11F
+....................      { 
+....................       delay_ms(250); 
+011B:  MOVLW  FA
+011C:  MOVWF  30
+011D:  CALL   004
+....................       Start(); 
+011E:  GOTO   018
+....................      } 
+....................      // PWM 0 bassin 
+....................      output_d(0xFF); 
+011F:  BSF    03.5
+0120:  CLRF   08
+0121:  MOVLW  FF
+0122:  BCF    03.5
+0123:  MOVWF  08
+....................      set_pwm1_duty(0); 
+0124:  CLRF   15
+....................      // 2 tarafi da low yaparak calismamasini motorun garantiledim 
+....................      output_low(pin_c3);    
+0125:  BCF    2F.3
+0126:  MOVF   2F,W
+0127:  BSF    03.5
+0128:  MOVWF  07
+0129:  BCF    03.5
+012A:  BCF    07.3
+....................      output_low(pin_c4); 
+012B:  BCF    2F.4
+012C:  MOVF   2F,W
+012D:  BSF    03.5
+012E:  MOVWF  07
+012F:  BCF    03.5
+0130:  BCF    07.4
+....................      delay_ms(20); 
+0131:  MOVLW  14
+0132:  MOVWF  30
+0133:  CALL   004
+0134:  GOTO   116
+....................    } 
+....................  
+.................... } 
+....................  
+0135:  SLEEP
+.................... void Start() 
+.................... {  
+....................    // Her baslangicta default degerleri ayarliyorum 
+....................    // %50 duty cycle 
+....................    ldr_value_new = 128; 
+*
+0018:  MOVLW  80
+0019:  MOVWF  20
+....................    ldr_value_old = 128; 
+001A:  MOVWF  21
+....................    working_pwm = 128; 
+001B:  MOVWF  22
+....................    //Surucunun bir bacagina low digerine high vererek calistirmaya hazirliyorum 
+....................    output_high(pin_c3); 
+001C:  BCF    2F.3
+001D:  MOVF   2F,W
+001E:  BSF    03.5
+001F:  MOVWF  07
+0020:  BCF    03.5
+0021:  BSF    07.3
+....................    output_low(pin_c4); 
+0022:  BCF    2F.4
+0023:  MOVF   2F,W
+0024:  BSF    03.5
+0025:  MOVWF  07
+0026:  BCF    03.5
+0027:  BCF    07.4
+....................    // %50 duty cycle olarak 128 degerinde pwm basiyorum 
+....................    set_pwm1_duty(working_pwm); 
+0028:  MOVF   22,W
+0029:  MOVWF  15
+....................    delay_ms(200); 
+002A:  MOVLW  C8
+002B:  MOVWF  30
+002C:  CALL   004
+....................     
+....................    while(TRUE) 
+....................    { 
+....................       // Stop a basildi mi sorgula 
+....................       if(input(pin_b3)) 
+002D:  BSF    03.5
+002E:  BSF    06.3
+002F:  BCF    03.5
+0030:  BTFSS  06.3
+0031:  GOTO   037
+....................       { 
+....................          delay_ms(250); 
+0032:  MOVLW  FA
+0033:  MOVWF  30
+0034:  CALL   004
+....................          break; 
+0035:  GOTO   0A7
+....................       } 
+0036:  GOTO   05A
+....................       // Hiz arttir  
+....................       else if (input(pin_b1)) 
+0037:  BSF    03.5
+0038:  BSF    06.1
+0039:  BCF    03.5
+003A:  BTFSS  06.1
+003B:  GOTO   049
+....................       { 
+....................          delay_ms(100); 
+003C:  MOVLW  64
+003D:  MOVWF  30
+003E:  CALL   004
+....................          if (working_pwm < 230) 
+003F:  MOVF   22,W
+0040:  SUBLW  E5
+0041:  BTFSS  03.0
+0042:  GOTO   046
+....................                working_pwm  += 25; 
+0043:  MOVLW  19
+0044:  ADDWF  22,F
+0045:  GOTO   048
+....................          else 
+....................             working_pwm = 255; 
+0046:  MOVLW  FF
+0047:  MOVWF  22
+....................       } 
+0048:  GOTO   05A
+....................       // Hiz azalt 
+....................       else if (input(pin_b2)) 
+0049:  BSF    03.5
+004A:  BSF    06.2
+004B:  BCF    03.5
+004C:  BTFSS  06.2
+004D:  GOTO   05A
+....................       { 
+....................          delay_ms(100); 
+004E:  MOVLW  64
+004F:  MOVWF  30
+0050:  CALL   004
+....................          // 0 ile 255 in disina cikmamasi icin  
+....................          if (working_pwm > 40) 
+0051:  MOVF   22,W
+0052:  SUBLW  28
+0053:  BTFSC  03.0
+0054:  GOTO   058
+....................             working_pwm -= 25; 
+0055:  MOVLW  19
+0056:  SUBWF  22,F
+0057:  GOTO   05A
+....................          //min hiz 
+....................          else 
+....................             working_pwm = 20; 
+0058:  MOVLW  14
+0059:  MOVWF  22
+....................       } 
+....................       //Potansiyometreden deger oku 
+....................       ldr_value_new = read_adc(); 
+005A:  BSF    1F.2
+005B:  BTFSC  1F.2
+005C:  GOTO   05B
+005D:  MOVF   1E,W
+005E:  MOVWF  20
+....................       // Eger gelen deger oncekinden 5 fazla veya az ise pwm bas 
+....................       // Burada +20 veya -20'in nedeni okunan degerde sapmanin yaratacagi surekli degeri yazdirmayi onlemek 
+....................       if (ldr_value_new >= ldr_value_old + 20 || ldr_value_new <= ldr_value_old - 20) 
+005F:  MOVLW  14
+0060:  ADDWF  21,W
+0061:  SUBWF  20,W
+0062:  BTFSC  03.0
+0063:  GOTO   06B
+0064:  MOVLW  14
+0065:  SUBWF  21,W
+0066:  SUBWF  20,W
+0067:  BTFSC  03.2
+0068:  GOTO   06B
+0069:  BTFSC  03.0
+006A:  GOTO   075
+....................       {   
+....................          // eski degeri yenisine esitle 
+....................          ldr_value_old = ldr_value_new; 
+006B:  MOVF   20,W
+006C:  MOVWF  21
+....................          working_pwm = ldr_value_new; 
+006D:  MOVF   20,W
+006E:  MOVWF  22
+....................          // Eger min analog degeri 20den kucuk ise working pwm i 20 yap 
+....................          if (working_pwm < 20) 
+006F:  MOVF   22,W
+0070:  SUBLW  13
+0071:  BTFSS  03.0
+0072:  GOTO   075
+....................             working_pwm = 20; 
+0073:  MOVLW  14
+0074:  MOVWF  22
+....................       } 
+....................        
+....................       set_pwm1_duty(working_pwm); 
+0075:  MOVF   22,W
+0076:  MOVWF  15
+....................       if(working_pwm > 25) 
+0077:  MOVF   22,W
+0078:  SUBLW  19
+0079:  BTFSC  03.0
+007A:  GOTO   097
+....................          duty = working_pwm / 25 - 1; 
+007B:  MOVF   22,W
+007C:  MOVWF  30
+007D:  MOVLW  19
+007E:  MOVWF  31
+*
+0093:  MOVLW  01
+0094:  SUBWF  78,W
+0095:  MOVWF  23
+0096:  GOTO   098
+....................       else 
+....................          duty = 0; 
+0097:  CLRF   23
+....................       // 7se de bu degeri bastir  
+....................       output_d(lookup_table[duty]); 
+0098:  MOVLW  24
+0099:  ADDWF  23,W
+009A:  MOVWF  04
+009B:  BCF    03.7
+009C:  MOVF   00,W
+009D:  MOVWF  30
+009E:  BSF    03.5
+009F:  CLRF   08
+00A0:  BCF    03.5
+00A1:  MOVF   30,W
+00A2:  MOVWF  08
+....................        
+....................        
+....................       delay_ms(100); 
+00A3:  MOVLW  64
+00A4:  MOVWF  30
+00A5:  CALL   004
+00A6:  GOTO   02D
+....................    } 
+00A7:  BCF    0A.3
+00A8:  BCF    0A.4
+00A9:  GOTO   11F (RETURN)
+....................  
+.................... } 
+....................  
+
+Configuration Fuses:
+   Word  1: 3F3A   HS NOWDT NOPUT NOBROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

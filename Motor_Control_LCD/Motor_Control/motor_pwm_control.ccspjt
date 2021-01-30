@@ -1,0 +1,22 @@
+[PROJECT]
+Target=motor_pwm_control.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.015
+Compiler=PCM
+CCSVersion=5.015
+[Target Data]
+FileList=motor_pwm_control.c
+[Directories]
+Include=D:\PIC\Devices\;D:\PIC\Drivers\
+[C:\Users\enist\OneDrive\Belgeler\CCS C Projects\Motor_Control\motor_pwm_control]
+Type=4
+[mru-list]
+1=motor_pwm_control.c
+[Opened Files]
+1=motor_pwm_control.c
+2=
+[motor_pwm_control.c]
+Type=4
+[Units]
+Count=1
+1=motor_pwm_control (main)
