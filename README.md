@@ -14,6 +14,8 @@ I build most of these circuits in real life too, but because of the qualities of
 <table style="width:100%">
    <h2>Blinking LED </h2>
    <img src=https://user-images.githubusercontent.com/45767042/106157242-8ab2ea00-6193-11eb-840e-fe6ba248edd2.PNG>
+   <h2> LDR_Motor_7SEG </h2>
+   <img src=https://user-images.githubusercontent.com/45767042/106253632-c9df4a80-6228-11eb-8ac5-80d30894e88b.PNG>
 
 </table>
      
