@@ -1,0 +1,33 @@
+#include <Slave_LCD_Output.h>
+//#use rs232(uart1, baud = 9600, stop=1, parity=N, xmit=pin_c6, rcv=pin_c7, STREAM=bltt, ERRORS)
+
+void main()
+{
+   set_tris_b(0x00);
+   output_d(0x00);
+   char command;
+   setup_spi(SPI_SLAVE | SPI_H_TO_L | spi_ss_disabled  );
+   int data;
+   while(TRUE)
+   {
+   while(!spi_data_is_in());
+   data = spi_read();
+   if (data == 0x01)
+       output_low(PIN_D0);
+   else
+      output_high(PIN_D0);
+  }
+  
+      /*
+      if(kbhit())
+    {                             
+      command = getc();
+      if( command == 'A')
+         output_high( pin_d0 );
+      else
+         output_low( pin_d0 );
+    }
+    
+   }*/
+
+}

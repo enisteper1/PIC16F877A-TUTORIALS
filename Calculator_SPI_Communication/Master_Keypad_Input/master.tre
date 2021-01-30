@@ -1,0 +1,155 @@
+ÀÄmaster
+   ÃÄmain  0/92  Ram=0
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ÀÄ@delay_ms1  0/20  Ram=1
+   ³  ÃÄButon_Sorgula  1/1751  Ram=0
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ÃÄ@ADDFF  0/321  Ram=16
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ÃÄ@ADDFF  0/321  Ram=16
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ÃÄ@ADDFF  0/321  Ram=16
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ÃÄ@ADDFF  0/321  Ram=16
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ÃÄ@ADDFF  0/321  Ram=16
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ÃÄ@ADDFF  0/321  Ram=16
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ÃÄ@ADDFF  0/321  Ram=16
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ÃÄ@ADDFF  0/321  Ram=16
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ÃÄ@ADDFF  0/321  Ram=16
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÃÄHesap  (Inline)  Ram=1
+   ³  ³  ³  ÃÄ@ADDFF  0/321  Ram=16
+   ³  ³  ³  ÃÄ@ADDFF  0/321  Ram=16
+   ³  ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ³  ÃÄ@DIVFF  0/202  Ram=14
+   ³  ³  ³  ÃÄ@MUL88  0/37  Ram=2
+   ³  ³  ³  ÃÄ@ITOF  0/29  Ram=2
+   ³  ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ³  ÃÄ@MUL88  0/37  Ram=2
+   ³  ³  ³  ÃÄ@ITOF  0/29  Ram=2
+   ³  ³  ³  ÃÄ@DIVFF  0/202  Ram=14
+   ³  ³  ³  ÃÄ@SFTOI  0/31  Ram=4
+   ³  ³  ³  ÃÄ@MUL88  0/37  Ram=2
+   ³  ³  ³  ÃÄ@ITOF  0/29  Ram=2
+   ³  ³  ³  ÃÄ@ADDFF  0/321  Ram=16
+   ³  ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ³  ÀÄ*
+   ³  ³  ³  ÃÄ@DIV88  (Inline)  Ram=3
+   ³  ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ³  ÀÄ*
+   ³  ³  ³  ÃÄ@MULFF  0/117  Ram=13
+   ³  ³  ³  ÃÄ@DIVFF  0/202  Ram=14
+   ³  ³  ³  ÃÄ@SFTOI  0/31  Ram=4
+   ³  ³  ³  ÃÄ@MUL88  0/37  Ram=2
+   ³  ³  ³  ÃÄ@ITOF  0/29  Ram=2
+   ³  ³  ³  ÃÄ@ADDFF  0/321  Ram=16
+   ³  ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ³  ÀÄ*
+   ³  ³  ³  ÃÄ@DIVFF  0/202  Ram=14
+   ³  ³  ³  ÃÄ@SFTOI  0/31  Ram=4
+   ³  ³  ³  ÀÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³     ÀÄ*
+   ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+   ³  ³  ÃÄ@FLT  0/63  Ram=10
+   ³  ³  ÃÄKomut_Gonder  0/22  Ram=1
+   ³  ³  ³  ÀÄ*
+   ³  ³  ÀÄ@delay_ms1  0/20  Ram=1
+   ³  ÀÄKomut_Gonder  0/22  Ram=1
+   ³     ÀÄ*
+   ÀÄrb0_kesmesi  0/21  Ram=0

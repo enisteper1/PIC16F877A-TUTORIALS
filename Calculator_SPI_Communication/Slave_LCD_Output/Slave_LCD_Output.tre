@@ -1,0 +1,31 @@
+ÀÄSlave_LCD_Output
+   ÃÄMAIN  0/52  Ram=0
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÀÄlcd_init  0/98  Ram=6
+   ³     ÃÄ@delay_ms1  0/20  Ram=1
+   ³     ÃÄlcd_send_nibble  0/17  Ram=1
+   ³     ÃÄ@delay_ms1  0/20  Ram=1
+   ³     ÃÄlcd_send_nibble  0/17  Ram=1
+   ³     ÃÄ@delay_ms1  0/20  Ram=1
+   ³     ÀÄlcd_send_byte  0/32  Ram=3
+   ³        ÃÄlcd_read_byte  0/44  Ram=3
+   ³        ³  ÃÄlcd_read_nibble  (Inline)  Ram=0
+   ³        ³  ÀÄlcd_read_nibble  (Inline)  Ram=0
+   ³        ÃÄlcd_send_nibble  0/17  Ram=1
+   ³        ÀÄlcd_send_nibble  0/17  Ram=1
+   ÀÄSSP_Kesmesi  0/26  Ram=0
+      ÃÄlcd_putc  0/44  Ram=1
+      ³  ÃÄlcd_gotoxy  0/18  Ram=4
+      ³  ³  ÀÄlcd_send_byte  0/32  Ram=3
+      ³  ³     ÀÄ*
+      ³  ÃÄlcd_send_byte  0/32  Ram=3
+      ³  ³  ÀÄ*
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄlcd_gotoxy  0/18  Ram=4
+      ³  ³  ÀÄ*
+      ³  ÃÄlcd_send_byte  0/32  Ram=3
+      ³  ³  ÀÄ*
+      ³  ÀÄlcd_send_byte  0/32  Ram=3
+      ³     ÀÄ*
+      ÀÄlcd_putc  0/44  Ram=1
+         ÀÄ*

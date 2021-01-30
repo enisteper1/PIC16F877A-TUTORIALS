@@ -1,0 +1,22 @@
+[PROJECT]
+Target=Slave_LCD_Output.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.015
+Compiler=PCM
+CCSVersion=5.015
+[Target Data]
+FileList=Slave_LCD_Output.c
+[Directories]
+Include=D:\PIC\Devices\;D:\PIC\Drivers\
+[C:\Users\enist\OneDrive\Belgeler\CCS C Projects\Slave_LCD_Output]
+Type=4
+[mru-list]
+1=Slave_LCD_Output.c
+[Opened Files]
+1=Slave_LCD_Output.c
+2=
+[Slave_LCD_Output.c]
+Type=4
+[Units]
+Count=1
+1=Slave_LCD_Output (main)

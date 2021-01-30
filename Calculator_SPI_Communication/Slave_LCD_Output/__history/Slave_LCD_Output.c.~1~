@@ -1,0 +1,11 @@
+#include <Slave_LCD_Output.h>
+
+void main()
+{
+
+	while(TRUE)
+	{
+		//TODO: User Code
+	}
+
+}

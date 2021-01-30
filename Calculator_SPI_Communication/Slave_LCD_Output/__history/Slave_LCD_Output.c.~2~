@@ -1,0 +1,13 @@
+#include <Slave_LCD_Output.h>
+
+void main()
+{
+   set_tris_b(0x00);
+   output_d(0x00);
+   
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

@@ -1,0 +1,32 @@
+#include <Slave_LCD_Output.h>
+#include <lcd.c>
+
+char deger;
+#int_SSP
+void SSP_Kesmesi()
+{
+      deger = spi_read();
+      // Eger kapatma komutu ise
+      if ( deger == 'A' )
+      {
+         lcd_putc( '\f' );
+         output_d( 0x00 );
+      }
+      // Eger kapatma komutu degil ise gelen degeri bastir
+      else
+         printf(lcd_putc, "%c", deger);   
+}
+void main()
+{
+   setup_adc_ports(0xFF);
+   set_adc_channel(0x00);
+   lcd_init();
+   // Slave oldugu icin CLK_DIV_DISABLED
+   setup_spi(SPI_SLAVE|SPI_L_TO_H| SPI_SS_DISABLED);
+   // Kesmeyi aktif hale getirdim
+   enable_interrupts(INT_SSP);
+   enable_interrupts(GLOBAL);
+   
+   while(TRUE);
+     
+}

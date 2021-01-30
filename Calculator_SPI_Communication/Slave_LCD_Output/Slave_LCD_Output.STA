@@ -1,0 +1,59 @@
+
+ROM used:   400/8192 (5%)
+            400/8192 (5%) including unused fragments
+
+            0.3 Average locations per line
+            4.1 Average locations per statement
+
+RAM used:   15/368 (4%) at main() level
+            36/368 (10%) worst case
+
+Stack used: 8 worst case (3 in main + 5 for interrupts)
+Stack size: 8
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   35    14  14  Slave_LCD_Output.c
+   10     0   0  Slave_LCD_Output.h
+  671     0   0  D:\PIC\Devices\16F877A.h
+  456    84  86  D:\PIC\Drivers\lcd.c
+----- -----
+ 1172    98 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     20   5    1             @delay_ms1
+0     44  11    3   596  5.9  lcd_read_byte
+ Inline         0    59  4.2  lcd_read_nibble
+0     17   4    1   179  3.3  lcd_send_nibble
+0     32   8    3   460  4.7  lcd_send_byte
+0     98  24    6   814  7.2  lcd_init
+0     18   4    4   208  6.3  lcd_gotoxy
+0     44  11    1   354  4.7  lcd_putc
+0     26   6    0   136  3.2  SSP_Kesmesi
+0     52  13    0   145  2.2  MAIN
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               9
+    Statements              98
+    Comments                225
+    Volume (V)              4563
+    Difficulty (D)          41.2
+    Effort to implement (E) 187910
+    Time to implement (T)   2 hours, 54 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   9
+    Maintainability (MI)    149
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-00030    45  0  
+00031-007FF   351  1648  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+

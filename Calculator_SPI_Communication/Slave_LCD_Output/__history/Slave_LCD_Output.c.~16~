@@ -1,0 +1,33 @@
+#include <Slave_LCD_Output.h>
+//#use rs232(uart1, baud = 9600, stop=1, parity=N, xmit=pin_c6, rcv=pin_c7, STREAM=bltt, ERRORS)
+
+#define SPI_MODE_0 (SPI_L_TO_H | SPI_XMIT_L_TO_H)
+#define SPI_MODE_1 (SPI_L_TO_H)
+#define SPI_MODE_2 (SPI_H_TO_L)
+#define SPI_MODE_3 (SPI_H_TO_L | SPI_XMIT_L_TO_H)
+
+#int_ssp //this interrupt will occur whenever we receive an SPI message (or an I2C message, actually)
+void message_receieved() {
+    unsigned int val;
+
+    val = spi_read(); //When you don't pass an argument, spi_read just returns the most
+                      //recently received SPI message. We can do this here because we know
+                      //that we just received a new message.
+
+    //display the value:
+    if( val == 10 )
+      output_high(pin_d0);
+    else
+      output_low( pin_d0 );
+}
+
+void main()
+{
+   set_tris_d(0x00);
+   output_d(0x00);
+   setup_spi(SPI_SLAVE | SPI_MODE_1); //setup the PIC as a slave in mode 1
+   enable_interrupts(INT_SSP); //enable interrupts on SPI messages
+   enable_interrupts(GLOBAL);
+   
+   while(true); //sit and wait for a message
+}

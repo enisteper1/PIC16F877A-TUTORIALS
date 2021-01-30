@@ -1,0 +1,336 @@
+#include <master.h>
+#FUSES  NOPUT, NOPROTECT, HS, NOWRT, NOBROWNOUT, NOCPD, NOLVP, NOWDT
+
+
+#define SUTUN_1 pin_d4
+#define SUTUN_2 pin_d5
+#define SUTUN_3 pin_d6
+#define SUTUN_4 pin_d7
+
+#define SATIR_1 pin_d0
+#define SATIR_2 pin_d1
+#define SATIR_3 pin_d2
+#define SATIR_4 pin_d3
+
+void Buton_Sorgula();
+void Hesap();
+void Komut_Gonder( char );
+float inp = 0;
+float out = 0;
+char islem = '/';
+int start = 0;
+int baslangic = 0;
+
+#int_ext
+void rb0_kesmesi()
+{
+   if (start == 1)
+      start = 0;
+   else
+      start = 1;
+   out = 0;
+   inp = 0;
+   baslangic = 1;
+   Komut_Gonder( '\f' );
+}
+
+void main()
+{
+   setup_spi(SPI_MASTER| SPI_L_TO_H| SPI_CLK_DIV_4);
+   delay_ms( 200 );
+   //Set up the ADC to read from A0
+   setup_adc_ports(0x00);
+   set_adc_channel(0x00);
+   
+   
+   set_tris_d(0b11110000);
+   output_d(0x00);
+  
+  ext_int_edge(H_TO_L);
+  enable_interrupts( INT_EXT );
+  enable_interrupts( GLOBAL );
+   
+   while(TRUE)
+   {  
+      if ( start )
+      {
+         if ( baslangic )
+         {
+            Komut_Gonder( '0' );
+            baslangic  = 0;
+         }
+         
+         Buton_Sorgula();
+      }
+   }
+
+}
+
+void Buton_Sorgula()
+{
+
+      //SATIR 1 -> 7, 8, 9, /
+      output_high( SATIR_1 );
+      // 7
+      if( input( SUTUN_1 ) )
+      {
+         if( inp != 0 )
+            inp *= 10;
+         if( inp == 0 && out == 0)
+            Komut_Gonder( '\f' );
+            
+         inp += 7;
+         
+         Komut_Gonder( '7' );
+         delay_ms(250);
+      }
+      // 8
+      else if( input( SUTUN_2 ) )
+      {
+         if( inp != 0 )
+            inp *= 10;
+         if( inp == 0 && out == 0)
+            Komut_Gonder( '\f' );
+            
+         inp += 8;
+         Komut_Gonder( '8' );
+        
+         delay_ms(250);
+      }
+      // 9
+      else if( input( SUTUN_3 ) )
+      {
+         if( inp != 0 )
+            inp *= 10;
+         if( inp == 0 && out == 0)
+            Komut_Gonder( '\f' );
+            
+         inp += 9;
+        
+         Komut_Gonder( '9' );
+         delay_ms(250);
+      }
+      // /
+      else if( input( SUTUN_4 ) )
+      {
+         islem = '/';
+         if ( out == 0 )
+         {
+            out = inp;
+            inp = 0;
+         }
+         
+         Komut_Gonder( '/' );
+         delay_ms(250);
+      }
+      output_low( SATIR_1 );
+      
+      
+      //SATIR 2 -> 4, 5, 6, x
+      output_high( SATIR_2 );
+      // 4
+      if( input( SUTUN_1 ) )
+      {
+         if( inp != 0 )
+            inp *= 10;
+         if( inp == 0 && out == 0)
+            Komut_Gonder( '\f' );
+            
+         inp += 4;
+         
+         Komut_Gonder( '4' );
+         delay_ms(250);
+      }
+      // 5
+      else if( input( SUTUN_2 ) )
+      {
+         if( inp != 0 )
+            inp *= 10;
+         if( inp == 0 && out == 0)
+            Komut_Gonder( '\f' );
+         inp += 5;
+         
+         Komut_Gonder( '5' );
+         delay_ms(250);
+      }
+      // 6
+      else if( input( SUTUN_3 ) )
+      {
+         if( inp != 0 )
+            inp *= 10;
+         if( inp == 0 && out == 0)
+            Komut_Gonder( '\f' );   
+         inp += 6;
+         
+         Komut_Gonder( '6' );
+         delay_ms(250);
+      }
+      // x
+      else if( input( SUTUN_4 ) )
+      {
+         islem = '*';
+         if ( out == 0 )
+         {
+            out = inp;
+            inp = 0;
+         }
+        
+         Komut_Gonder( '*' );
+         delay_ms(250);
+      }
+      output_low( SATIR_2 );
+      
+      
+      //SATIR 3 -> 1, 2, 3, -
+      output_high( SATIR_3 );
+      // 1
+      if( input( SUTUN_1 ) )
+      {
+         if( inp != 0 )
+            inp *= 10;
+         if( inp == 0 && out == 0)
+            Komut_Gonder( '\f' );   
+         inp += 1;
+         
+         Komut_Gonder( '1' );
+         delay_ms(250);
+      }
+      // 2
+      else if( input( SUTUN_2 ) )
+      {
+         if( inp != 0 )
+            inp *= 10;
+         if( inp == 0 && out == 0)
+            Komut_Gonder( '\f' );  
+         inp += 2;
+         
+         Komut_Gonder( '2' );
+         delay_ms(250);
+      }
+      // 3
+      else if( input( SUTUN_3 ) )
+      {
+         if( inp != 0 )
+            inp *= 10;
+         if( inp == 0 && out == 0)
+            Komut_Gonder( '\f' );  
+         inp += 3;
+         
+         Komut_Gonder( '3' );
+         delay_ms(250);
+      }
+      // -
+      else if( input( SUTUN_4 ) )
+      {
+         islem = '-';
+         if ( out == 0 )
+         {
+            out = inp;
+            inp = 0;
+         }
+        
+         Komut_Gonder( '-' );
+         delay_ms(250);
+      }
+      output_low( SATIR_3 );
+      
+      
+      //SATIR -> ON/C, 0, =, +
+      output_high( SATIR_4 );
+      // ON/C
+      if( input( SUTUN_1 ) )
+      {
+         // Input ve Output degerlerini sifirladim
+         inp = 0;
+         out = 0;
+         
+         Komut_Gonder( '\f' );
+         Komut_Gonder( '0' );
+         delay_ms(250);
+      }
+      // 0
+      if( input( SUTUN_2 ) )
+      {
+         if( inp != 0 )
+            inp *= 10;
+         if( inp == 0 && out == 0)
+            Komut_Gonder( '\f' );   
+         
+         Komut_Gonder( '0' );
+         delay_ms(250);
+      }
+      // =
+      else if( input( SUTUN_3 ) )
+      {
+         
+         Komut_Gonder( '\f' );
+         Hesap();
+         delay_ms(250);
+      }
+      // +
+      else if( input( SUTUN_4 ) )
+      {
+         islem = '+';
+         if ( out == 0 )
+         {
+            out = inp;
+            inp = 0;
+         }
+         inp = 0;
+         Komut_Gonder( '+' );
+         delay_ms(250);
+      }
+      output_low( SATIR_4 );
+}
+
+void Hesap()
+{
+   switch(islem)
+   {
+      case '+': out += inp;
+                break;
+      case '-': out -= inp;
+                break;
+      case '*': out *= inp;
+                break;
+      case '/': out /= inp;
+                break;
+      
+      default: break;
+   
+   }
+   inp = 0;
+   int sonuc = 0;
+   int basamak = 1;
+   while( basamak * 10 <= out)
+      basamak *= 10;
+   double temp = out;
+   while( basamak >= 1 )
+   {
+      sonuc = temp / basamak;
+      temp -= basamak * sonuc;
+      Komut_Gonder( sonuc + '0' );
+      
+      basamak /= 10;
+   }
+   if ( islem == '/' )
+   {
+      Komut_Gonder( ',' );
+      temp *= 100;
+      sonuc = temp / 10;
+      temp -= 10 * sonuc;
+      Komut_Gonder( sonuc + '0' );
+      sonuc = temp / 1;
+      Komut_Gonder( sonuc + '0' );
+   }
+}
+
+void Komut_Gonder(char command)
+{
+      output_low( pin_e0 );
+      spi_write(command);
+      delay_us(10);
+      output_high( pin_e0 );
+      delay_ms( 10 );
+}
+

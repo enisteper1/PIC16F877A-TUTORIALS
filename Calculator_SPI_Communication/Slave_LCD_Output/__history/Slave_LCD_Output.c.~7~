@@ -1,0 +1,21 @@
+#include <Slave_LCD_Output.h>
+#use rs232(uart1, baud = 9600, stop=1, parity=N, xmit=pin_c6, rcv=pin_c7, STREAM=bltt, ERRORS)
+
+void main()
+{
+   set_tris_b(0x00);
+   output_d(0x00);
+   char command;
+   while(TRUE)
+   {
+      if(kbhit())
+    {                             
+      command = getc();
+      if( command == 'A')
+         output_high( pin_d0 );
+      else
+         output_low( pin_d0 );
+    }
+   }
+
+}

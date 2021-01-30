@@ -1,0 +1,31 @@
+#include <Slave_LCD_Output.h>
+//#use rs232(uart1, baud = 9600, stop=1, parity=N, xmit=pin_c6, rcv=pin_c7, STREAM=bltt, ERRORS)
+
+#define SPI_MODE_0 (SPI_L_TO_H | SPI_XMIT_L_TO_H)
+#define SPI_MODE_1 (SPI_L_TO_H)
+#define SPI_MODE_2 (SPI_H_TO_L)
+#define SPI_MODE_3 (SPI_H_TO_L | SPI_XMIT_L_TO_H)
+int value;
+#int_SSP
+SSP_isr()
+{
+      clear_interrupt(int_ssp);
+      disable_interrupts(GLOBAL);
+      value=spi_read(0);
+      if (value==10)
+         output_high(PIN_d0);       
+      else
+         output_low( PIN_D0 );
+      enable_interrupts(GLOBAL);
+}
+void main()
+{
+   set_tris_a(0x0f);
+   setup_spi(SPI_SLAVE|SPI_L_TO_H| SPI_SS_DISABLED);
+   enable_interrupts(INT_SSP);
+   enable_interrupts(GLOBAL);
+   
+   output_high(PIN_a1);
+   while(1);
+     
+}
