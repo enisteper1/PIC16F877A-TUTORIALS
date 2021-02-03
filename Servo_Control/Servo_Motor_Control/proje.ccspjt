@@ -1,0 +1,22 @@
+[PROJECT]
+Target=proje.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.015
+Compiler=PCM
+CCSVersion=5.015
+[Target Data]
+FileList=proje.c
+[Directories]
+Include=D:\PIC\Devices\;D:\PIC\Drivers\
+[C:\Users\enist\OneDrive\Belgeler\CCS C Projects\Proje\proje]
+Type=4
+[mru-list]
+1=proje.c
+[Opened Files]
+1=proje.c
+2=
+[proje.c]
+Type=4
+[Units]
+Count=1
+1=proje (main)

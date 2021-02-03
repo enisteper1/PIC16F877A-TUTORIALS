@@ -1,0 +1,71 @@
+#include <proje.h>
+#use fast_io(a)
+#use fast_io(b)
+#use fast_io(d)
+#define use_portb_lcd TRUE
+#include <lcd.c>
+unsigned long int i=0,aci=0;
+
+void servo(unsigned long int b,c)
+{
+ output_high(pin_d7);
+ delay_us(550+b);  // PWM Dolu Kisim
+ output_low(pin_d7);
+ delay_us(19450-b);  //PWM Dolu Kismi 20 ms'e tamamlayacak kisim
+ printf(lcd_putc,"\fAci = %u Derece\n b= %lu",c, b);
+}
+
+void servo_high()
+{
+   output_high(pin_d7);
+   delay_us(550+2046);
+   output_low(pin_d7);
+   delay_us(19450 - 2046);
+}
+
+
+void servo_low()
+{
+   output_high(pin_d7);
+   delay_us(550+1023);
+   output_low(pin_d7);
+   delay_us(19450-1023);
+}
+
+
+
+void main()
+{  set_tris_b(0x00);
+   output_b(0x00);
+set_tris_a(0x01);
+ set_tris_d(0x00);
+ output_d(0x00);
+ set_tris_c(0xFF);
+ output_c(0x00);
+ /*
+ setup_adc(adc_clock_div_16);
+ setup_adc_ports(AN0);
+ set_adc_channel(0);*/
+ lcd_init();
+ 
+ 
+ while(1)
+ {
+ 
+  if( input(pin_c1) == 0 )
+  {
+   delay_us(20);
+   servo_high();
+   output_high(pin_d0);
+   printf(lcd_putc, "\fOpen!");
+  }
+  else if ( input(pin_c4) == 0 )
+  {
+   delay_us(20);
+   servo_low();
+   output_low(pin_d0);
+   lcd_putc("\fClosed!");
+  }
+
+ } 
+}

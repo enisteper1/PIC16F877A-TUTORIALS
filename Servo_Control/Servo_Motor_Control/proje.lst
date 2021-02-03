@@ -1,0 +1,283 @@
+CCS PCM C Compiler, Version 5.015, 5967               02-Jan-21 03:39
+
+               Filename:   C:\Users\enist\OneDrive\Belgeler\CCS C Projects\Proje\proje.lst
+
+               ROM used:   160 words (2%)
+                           Largest free fragment is 2048
+               RAM used:   7 (2%) at main() level
+                           8 (2%) worst case
+               Stack used: 2 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   063
+0003:  NOP
+.................... #include <proje.h> 
+.................... #include <16F877A.h> 
+.................... //////////// Standard Header file for the PIC16F877A device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F877A 
+....................  
+.................... #list 
+....................  
+.................... #device ADC=10 
+....................  
+.................... #FUSES NOWDT                 	//No Watch Dog Timer 
+.................... #FUSES NOBROWNOUT            	//No brownout reset 
+.................... #FUSES NOLVP 
+.................... #FUSES PUT                	//No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+....................  
+.................... #use delay(crystal=20000000) 
+0004:  MOVLW  21
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   017
+000A:  MOVLW  06
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  7B
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  DECFSZ 00,F
+0016:  GOTO   00A
+0017:  RETURN
+0018:  MOVLW  03
+0019:  SUBWF  22,F
+001A:  BTFSS  03.0
+001B:  GOTO   026
+001C:  MOVLW  22
+001D:  MOVWF  04
+001E:  BCF    03.7
+001F:  MOVF   00,W
+0020:  BTFSC  03.2
+0021:  GOTO   026
+0022:  GOTO   024
+0023:  GOTO   024
+0024:  DECFSZ 00,F
+0025:  GOTO   023
+0026:  RETURN
+....................  
+....................  
+.................... /* 
+.................... #define LCD_RS_PIN PIN_B0 
+.................... #define LCD_RW_PIN PIN_B1 
+.................... #define LCD_ENABLE_PIN PIN_B2 
+.................... #define LCD_DATA4 PIN_B3 
+.................... #define LCD_DATA5 PIN_B4 
+.................... #define LCD_DATA6 PIN_B5 
+.................... #define LCD_DATA7 PIN_B6 
+.................... #include <lcd.c> 
+.................... */ 
+.................... #FUSES NOPUT, NOPROTECT, HS, NOWRT, NOBROWNOUT, NOCPD, NOLVP, NOWDT 
+....................  
+.................... #define SERVO_PIN PIN_D7 
+....................  
+.................... //#define GREEN_LED PIN_D0 
+.................... //#define RED_LED PIN_D1 
+....................  
+.................... #define SENSOR_1 PIN_C1 
+.................... #define SENSOR_2 PIN_C4 
+....................  
+....................  
+....................  
+.................... void Servo_High() 
+.................... { 
+....................    output_high(SERVO_PIN); 
+*
+0044:  BSF    03.5
+0045:  BCF    08.7
+0046:  BCF    03.5
+0047:  BSF    08.7
+....................    delay_us(550 + 2000); 
+0048:  MOVLW  02
+0049:  MOVWF  21
+004A:  CALL   004
+004B:  MOVLW  05
+004C:  MOVWF  21
+004D:  MOVLW  6D
+004E:  MOVWF  22
+004F:  CALL   018
+0050:  DECFSZ 21,F
+0051:  GOTO   04D
+....................    output_low(SERVO_PIN); 
+0052:  BSF    03.5
+0053:  BCF    08.7
+0054:  BCF    03.5
+0055:  BCF    08.7
+....................    delay_us(19450 - 2000); 
+0056:  MOVLW  11
+0057:  MOVWF  21
+0058:  CALL   004
+0059:  MOVLW  02
+005A:  MOVWF  21
+005B:  MOVLW  E0
+005C:  MOVWF  22
+005D:  CALL   018
+005E:  DECFSZ 21,F
+005F:  GOTO   05B
+0060:  BCF    0A.3
+0061:  BCF    0A.4
+0062:  GOTO   08F (RETURN)
+.................... } 
+....................  
+....................  
+.................... void Servo_Low() 
+.................... { 
+....................    output_high(SERVO_PIN); 
+*
+0027:  BSF    03.5
+0028:  BCF    08.7
+0029:  BCF    03.5
+002A:  BSF    08.7
+....................    delay_us(550 + 1000); 
+002B:  MOVLW  01
+002C:  MOVWF  21
+002D:  CALL   004
+002E:  MOVLW  05
+002F:  MOVWF  21
+0030:  MOVLW  6D
+0031:  MOVWF  22
+0032:  CALL   018
+0033:  DECFSZ 21,F
+0034:  GOTO   030
+....................    output_low(SERVO_PIN); 
+0035:  BSF    03.5
+0036:  BCF    08.7
+0037:  BCF    03.5
+0038:  BCF    08.7
+....................    delay_us(19450 - 1000); 
+0039:  MOVLW  12
+003A:  MOVWF  21
+003B:  CALL   004
+003C:  MOVLW  02
+003D:  MOVWF  21
+003E:  MOVLW  E0
+003F:  MOVWF  22
+0040:  CALL   018
+0041:  DECFSZ 21,F
+0042:  GOTO   03E
+0043:  RETURN
+.................... } 
+....................  
+....................  
+....................  
+.................... void main() 
+*
+0063:  MOVF   03,W
+0064:  ANDLW  1F
+0065:  MOVWF  03
+0066:  MOVLW  FF
+0067:  MOVWF  20
+0068:  BSF    03.5
+0069:  BSF    1F.0
+006A:  BSF    1F.1
+006B:  BSF    1F.2
+006C:  BCF    1F.3
+006D:  MOVLW  07
+006E:  MOVWF  1C
+006F:  BCF    03.7
+.................... {   
+....................    //set_tris_b(0b00000000); 
+....................    //output_b(0x00); 
+....................     
+....................    set_tris_d(0b10000000); 
+0070:  MOVLW  80
+0071:  MOVWF  08
+....................    output_d(0x00); 
+0072:  CLRF   08
+0073:  BCF    03.5
+0074:  CLRF   08
+....................     
+....................    set_tris_c(0b000010010); 
+0075:  MOVLW  12
+0076:  BSF    03.5
+0077:  MOVWF  07
+0078:  BCF    03.5
+0079:  MOVWF  20
+....................    output_c(0x00); 
+007A:  MOVLW  00
+007B:  MOVWF  20
+007C:  BSF    03.5
+007D:  CLRF   07
+007E:  BCF    03.5
+007F:  CLRF   07
+....................     
+....................   // lcd_init(); 
+....................    //lcd_putc( "Closed!" ); 
+....................    //output_high( RED_LED ); 
+....................    Servo_Low(); 
+0080:  CALL   027
+....................   
+....................  while(TRUE) 
+....................  { 
+....................   
+....................   if( input( SENSOR_1 ) == 0 ) 
+0081:  BSF    20.1
+0082:  MOVF   20,W
+0083:  BSF    03.5
+0084:  MOVWF  07
+0085:  BCF    03.5
+0086:  BTFSC  07.1
+0087:  GOTO   090
+....................   { 
+....................    delay_us(20); 
+0088:  MOVLW  20
+0089:  MOVWF  77
+008A:  DECFSZ 77,F
+008B:  GOTO   08A
+008C:  GOTO   08D
+008D:  NOP
+....................    servo_high(); 
+008E:  GOTO   044
+....................    //output_high( GREEN_LED ); 
+....................    //output_low( RED_LED ); 
+....................   // lcd_putc( "\fOpen!" ); 
+....................   } 
+008F:  GOTO   09E
+....................   else if ( input( SENSOR_2 ) == 0 ) 
+0090:  BSF    20.4
+0091:  MOVF   20,W
+0092:  BSF    03.5
+0093:  MOVWF  07
+0094:  BCF    03.5
+0095:  BTFSC  07.4
+0096:  GOTO   09E
+....................   { 
+....................    delay_us(20); 
+0097:  MOVLW  20
+0098:  MOVWF  77
+0099:  DECFSZ 77,F
+009A:  GOTO   099
+009B:  GOTO   09C
+009C:  NOP
+....................    Servo_Low(); 
+009D:  CALL   027
+....................    //output_low( GREEN_LED ); 
+....................    //output_high( RED_LED ); 
+....................    //lcd_putc( "\fClosed!" ); 
+....................   } 
+009E:  GOTO   081
+....................  
+....................  }  
+.................... } 
+009F:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F3A   HS NOWDT NOPUT NOBROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

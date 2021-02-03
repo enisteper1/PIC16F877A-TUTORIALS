@@ -1,0 +1,73 @@
+#include <proje.h>
+#define use_portb_lcd TRUE
+#include <lcd.c>
+#FUSES NOPUT, NOPROTECT, HS, NOWRT, NOBROWNOUT, NOCPD, NOLVP, NOWDT
+
+#define SERVO_PIN PIN_D7
+#define RED_LED PIN_D0
+#define GREEN_LED PIN_D1
+#define INPUT_1 PIN_C1
+#define INPUT_2 PIN_C4
+void servo_pwm(unsigned long int b)
+{
+ output_high(SERVO_PIN);
+ delay_us(550+b); 
+ output_low(SERVO_PIN);
+ delay_us(19450-b);  
+}
+
+void servo_high()
+{
+   output_high(SERVO_PIN);
+   delay_us(550+2046);
+   output_low(SERVO_PIN);
+   delay_us(19450 - 2046);
+}
+
+
+void servo_low()
+{
+   output_high(SERVO_PIN);
+   delay_us(550+1023);
+   output_low(SERVO_PIN);
+   delay_us(19450-1023);
+}
+
+
+
+void main()
+{  
+   set_tris_b(0x00);
+   output_b(0x00);
+   
+   set_tris_d(0x00);
+   output_d(0x00);
+   
+   set_tris_c(0b000010010);
+   output_c(0x00);
+   
+   lcd_init();
+ 
+ 
+ while(TRUE)
+ {
+ 
+  if( input( INPUT_1 ) == 0 )
+  {
+   delay_us(20);
+   servo_high();
+   output_high( RED_LED );
+   output_low( GREEN_LED );
+   printf(lcd_putc, "\fOpen!");
+  }
+  else if ( input( INPUT_2 ) == 0 )
+  {
+   delay_us(20);
+   servo_low();
+   output_low( RED_LED );
+   output_high( GREEN_LED );
+   lcd_putc("\fClosed!");
+  }
+
+ } 
+}
