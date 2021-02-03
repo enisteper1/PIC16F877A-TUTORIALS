@@ -12,6 +12,8 @@ I build most of these circuits in real life too, but because of the qualities of
 
 # Examples
 <table style="width:100%">
+   <h2>Calculator with SPI Communication</h2>
+   <img src=https://user-images.githubusercontent.com/45767042/106364488-72cc9900-6340-11eb-94dc-30f05c8a7e35.PNG>
    <h2>Blinking LED </h2>
    <img src=https://user-images.githubusercontent.com/45767042/106157242-8ab2ea00-6193-11eb-840e-fe6ba248edd2.PNG>
    <h2> LDR_Motor_7SEG </h2>
